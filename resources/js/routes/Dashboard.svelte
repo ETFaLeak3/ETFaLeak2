@@ -5,7 +5,7 @@
     export let errors = {};
     /* svelte-ignore unused-export-let */
     export let auth = {};
-    import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.svelte";
+    import BreezeAuthenticatedLayout from "@/layouts/Authenticated.svelte";
 </script>
 
 <svelte:head>

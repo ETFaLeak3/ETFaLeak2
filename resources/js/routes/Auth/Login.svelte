@@ -1,7 +1,7 @@
 <script>
     import BreezeButton from "$lib/components/Button.svelte";
     import BreezeCheckbox from "$lib/components/Checkbox.svelte";
-    import BreezeGuestLayout from "@/Layouts/Guest.svelte";
+    import BreezeGuestLayout from "@/layouts/Guest.svelte";
     import BreezeInput from "$lib/components/Input.svelte";
     import BreezeLabel from "$lib/components/Label.svelte";
     import BreezeValidationErrors from "$lib/components/ValidationErrors.svelte";
