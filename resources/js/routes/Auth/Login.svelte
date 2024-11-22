@@ -6,10 +6,13 @@
     import BreezeLabel from "$lib/components/Label.svelte";
     import BreezeValidationErrors from "$lib/components/ValidationErrors.svelte";
     import { Link, useForm } from "@inertiajs/svelte";
+    import { loginWithOAuth } from "$lib/authService";
+
     let err = {};
     export let errors = {};
     export let canResetPassword;
     export let status;
+    let isRedirecting = false;
 
     const form = useForm({
         email: null,
@@ -25,6 +28,12 @@
         $form.post("/login", {
             onSuccess: () => $form.reset(),
         });
+    };
+
+    const handleOAuth = (provider) => {
+        console.log(`Starting OAuth for: ${provider}`);
+        isRedirecting = true; // Active le spinner
+        loginWithOAuth(provider);
     };
 </script>
 
@@ -70,7 +79,6 @@
         </div>
 
         <div class="block mt-4">
-            <!-- svelte-ignore a11y-label-has-associated-control -->
             <label class="flex items-center">
                 <BreezeCheckbox name="remember" bind:checked={form.remember} />
                 <span class="ml-2 text-sm text-gray-600">Remember me</span>
@@ -96,4 +104,39 @@
             </BreezeButton>
         </div>
     </form>
+
+    <!-- Section OAuth -->
+    <div class="mt-6">
+        <p class="text-center text-gray-600">Or log in with:</p>
+        <div class="flex justify-center space-x-4 mt-4">
+            <BreezeButton
+                class="bg-red-500 text-white"
+                onclick={() => {
+                    console.log('Google login button clicked');
+                    handleOAuth('google');
+                }}
+                disabled={isRedirecting}
+            >
+                {#if isRedirecting}
+                    Redirecting...
+                {:else}
+                    Log in with Google
+                {/if}
+            </BreezeButton>
+            <BreezeButton
+                class="bg-red-500 text-white"
+                onclick={() => {
+                    console.log('Github login button clicked');
+                    handleOAuth('github');
+                }}
+                disabled={isRedirecting}
+            >
+                {#if isRedirecting}
+                    Redirecting...
+                {:else}
+                    Log in with Github
+                {/if}
+            </BreezeButton>
+        </div>
+    </div>
 </BreezeGuestLayout>

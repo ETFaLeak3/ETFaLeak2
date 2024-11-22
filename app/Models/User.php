@@ -13,6 +13,19 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * Créer un token API personnalisé.
+     */
+    public function createApiToken()
+    {
+        return Str::random(60);  // Crée un token simple
+    }
+
+    public function createCredentialsId()
+    {
+        return Str::random(16);  // Crée un ID simple
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -21,6 +34,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'provider', 
+        'provider_id'
     ];
 
     /**
