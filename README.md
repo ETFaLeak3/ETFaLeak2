@@ -1,66 +1,208 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<br/>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmoEKpp2xduxbrUK1vGPGzdJ91CLf3scrtwg&s" width="350"></a></p>
+<br/>
+<p align="center"> 
+    <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwind css&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/>
 </p>
 
-## About Laravel
+<hr/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> ❗ **Attention**<br/>
+> **Ce README changera à l'avenir.** Vous en serez informé sur Discord.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<br/>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ⚙ Mise en place du projet
 
-## Learning Laravel
+### 🔨 Installation des outils
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Tout d'abord, il vous est demandé d'installer **PHP**, pour cela, sous windows, ouvrez un powershell et exécutez la commande suivante :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Téléchargement de la dernière version de PHP (remplacez "x64" par "x86" si nécessaire)
+```bash
+Invoke-WebRequest -Uri https://windows.php.net/downloads/releases/php-8.2.12-Win32-vs16-x64.zip -OutFile php.zip
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Extraction dans un répertoire (exemple : C:\php)
+```bash
+Expand-Archive -Path php.zip -DestinationPath C:\php
+```
 
-## Laravel Sponsors
+Ajout du répertoire PHP au PATH (si ce n'est pas déjà fait)
+```bash
+[System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\php", [System.EnvironmentVariableTarget]::Machine)
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Si vous êtes sous un autre OS : https://www.php.net/manual/en/install.php
 
-### Premium Partners
+Il vous faut aussi Composer, qui est un gestionnaire de dépendances pour PHP. Pour cela, exécutez la commande suivante dans votre powershell :
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Téléchargement de l'installateur de Composer
+```bash
+Invoke-WebRequest -Uri https://getcomposer.org/installer -OutFile composer-setup.php
+```
 
-## Contributing
+Vérification du hash SHA-384 pour des raisons de sécurité
+```bash
+$HASH = Invoke-WebRequest -Uri https://composer.github.io/installer.sig -UseBasicParsing
+if ((Get-FileHash -Path composer-setup.php -Algorithm SHA384).Hash -ne $HASH.Content) {
+    Write-Host "Le fichier est corrompu. Installation annulée." -ForegroundColor Red
+    exit
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Installation de Composer
+```bash
+php composer-setup.php --install-dir=C:\php --filename=composer
+```
 
-## Code of Conduct
+Ajout de Composer au PATH
+```bash
+[System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\php", [System.EnvironmentVariableTarget]::Machine)
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Suppression du fichier d'installation
+```bash
+Remove-Item composer-setup.php
+```
 
-## Security Vulnerabilities
+Si vous êtes sous un autre OS : https://getcomposer.org/download/
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Vous devez également installer **git** pour pouvoir travailler avec le repository.
 
-## License
+https://git-scm.com/download/win
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Il vous faut également **NodeJS** pour le front-end. Pour cela, exécutez la commande suivante dans votre powershell :
+
+```bash
+Invoke-WebRequest -Uri https://nodejs.org/dist/v16.13.0/node-v16.13.0-x64.msi -OutFile node.msi
+Start-Process -Wait -FilePath node.msi
+Remove-Item node.msi
+```
+
+Si vous êtes sous un autre OS : https://nodejs.org/en/download/
+
+<br/>
+
+### 🔐 Installation des dépendances
+
+Tout d'abord, assurez-vous que Laragon soit **démarré**. Si c'est fait, ouvrez le **Terminal** de Laragon. Cela devrait vous ouvrir une fenêtre Cmder. Si vous êtes familié avec le shell Linux, c'est la même syntaxe.
+
+Tout d'abord, rendez-vous dans le répertoire dans lequel vous avez **cloné** le repository. 
+
+Si vous ne l'avez pas encore fait, rendez-vous dans n'importe quelle console, naviguez vers votre répertoire et exécutez la commande suivante :
+
+```bash
+git clone https://github.com/ETFaLeak3/ETFaLeak2
+```
+
+Une fois le repository cloné, retournez dans votre Cmder, dirigez-vous vers le répertoire DramaQuick, et exécutez les commandes suivantes :
+
+```bash
+composer install
+```
+Cela aura pour effet d'installer les dépendances **PHP** du projet.
+Ensuite, exécutez la commande suivante :
+
+```bash
+npm install
+```
+Cela aura pour effet d'installer les dépendances **NodeJS** du projet.
+
+<br/>
+
+### 💻 Lancer le projet en mode développement
+
+Pour lancer le projet en mode développement, vous aurez besoin de deux consoles. Ouvrez-en une première et exécutez la commande suivante dans le répertoire du projet :
+
+```bash
+php artisan serve
+```
+Vous aurez alors un message "[INFO] Server running on http://127.0.0.1:8000" C'est à cet URL que vous devrez vous rendre pour voir le site.
+
+Maintenant, vous allez devoir lancer le serveur de développement du **front-end**. Rendez-vous dans votre seconde console et faites la commande suivante :
+
+```bash
+npm run dev
+```
+
+Vous verrez alors la ligne "VITE v3.2.5 ready in ... ms". Cela signifie que le serveur **front-end** est s'est lancé avec succès.
+
+Vous pouvez désormais vous rendre à l'adresse http://127.0.0.1:8000 et voir le site !
+
+> 📝 **À noter**<br/>
+> Tout le front-end se situe dans `/resources/js/`. Grâce au *🔥 hot reload 🔥*, toute modification appliquée se verra en direct sur votre page, il n'y a pas besoin de relancer le serveur front-end.
+
+## 💾 Base de données
+
+Assurez-vous également que la partie DB de votre fichier .env est identique à la suivante :
+
+```dosini
+DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=dramaquick
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+
+*Libre à vous de modifier les paramètres, mais faites attention à les prendre en compte pour la suite.* 
+
+Tout d'abord, **si vous ne l'avez pas déjà mis en place**, vous devez créer une base de données. Pour cela, vous devez executer la commande suivante dans votre terminal dans le répertoire du projet :
+
+```bash
+php artisan migrate
+```
+
+<br/>
+
+### 🛠️ Migrations de la base de données
+
+On appelle une migration toute modification appliquée sur la structure de la base de données. 
+
+#### ⚡ Appliquer des migrations
+
+Par défaut, si vous venez de créer la base de données, vous devrez faire la commande suivante dans votre terminal :
+
+```bash
+php artisan migrate
+```
+Cela aura pour effet de mettre en place la première structure de la base de données.
+
+#### ⏳ Status des migrations 
+
+Pour voir les migrations réalisées jusqu'à présent, vous pouvez faire la commande suivante :
+
+```bash
+php artisan migrate:status
+```
+Si vous voyez "Ran" sous status, cela veut dire que la migration a bien été appliquée sur la base de données. Si vous voyez "Pending", c'est que ce n'est pas le cas, auquel cas faites la première commande ci-dessus.
+
+#### 🧩 Créer une migration
+
+Si vous venez à modifier la structure de la base de données, vous devrez exécuter la commande suivante pour créer une migration :
+
+```bash
+php artisan make:migration nom_de_la_migration
+```
+Si Laravel parvient à déterminer les migrations automatiquement, le nouveau fichier créé dans `/database/migrations/` sera pré-rempli. Sinon, vous devrez le remplir vous-même.
+
+> 📝 **À noter**<br/>
+> Les migrations créées ne sont pas appliquées par défaut. Vous devrez les appliquer vous-même.
+
+<br/>
+
+## 🎯 Code de conduite
+
+Pour garder un maximum d'organisation, vous êtes priés de respecter une certaine nomenclature sur toute modification que vous apporterez au projet.
+
+- 🚨 Commits compréhensibles, vrais noms de commit
+- ❗❗ **Aucun push** sur la branche principale. Pour une nouvelle fonctionnalité, créez une nouvelle branche et nommez la de la façon suivante : `features/authentication` ou `features/dessin_quiz`, par exemple. Si la fonctionnalité existe déjà, libre à vous de push sur cette branche-ci. Une fois les features finies, un **dev senior** s'occupera de merge sur la branche principale.
+- 🛠️ Vrais noms de migrations compréhensibles
+- ✨ Utiliser https://gitmoji.dev/ pour les emojis des commits
+
+<br/>
+
+> ***Optionnel*** : si vous pouvez préciser les modifications/ajouts que vous faites ailleurs (Figma, Notion), faites-le, cela permet de tenir l'équipe entière au courant et de ne pas faire de travail en double ! 😀
