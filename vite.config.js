@@ -14,6 +14,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "$lib": path.resolve(__dirname, "resources/js/lib"),
+            "@": path.resolve(__dirname, "resources/js"),
         }
     }
 });
