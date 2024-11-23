@@ -65,6 +65,8 @@ Vérifiez l'installation de pnpm :
 pnpm -v
 ```
 
+Si l'installation de pnpm échoue, rendez-vous sur leur site [pnpm.io/fr/installation](https://pnpm.io/fr/installation) pour trouver les autres moyens d'installation.
+
 ## ⚙️ Configuration initiale
 ### 🛠️ Modifier le fichier php.ini
 Laravel requiert que la directive variables_order dans php.ini soit correctement configurée pour éviter des erreurs au démarrage.
