@@ -14,183 +14,138 @@
 
 <br/>
 
-## ⚙ Mise en place du projet
+## 📋 Prérequis
 
-### 🔨 Installation des outils
+Avant de commencer, assurez-vous d'avoir installé les outils nécessaires.
 
-Tout d'abord, il vous est demandé d'installer **PHP**
+### 🐘 1. PHP et Composer avec Herd Laravel (Recommandé)
 
-Pour cela, deux solutions, soit Herd Laravel disponible ici -> https://herd.laravel.com/windows (windows) | https://herd.laravel.com/ (macOS et UNIX) 
+**[Herd](https://herd.laravel.com/)** est un outil qui simplifie la configuration de votre environnement Laravel, principalement sur **macOS** et **Windows**.
 
-Soit par commande :
+1. **Téléchargez Herd** : Rendez-vous sur [herd.laravel.com](https://herd.laravel.com/) et installez-le. 
+(lien windows : [ici](https://herd.laravel.com/download/windows)) | (lien macOS : [ici](https://herd.laravel.com/download))
+2. **Configurez Herd** :
+   - Ajoutez votre projet dans Herd.
+   - Activez les services essentiels : **PHP**, **MySQL**, et **Redis**.
+3. **Vérifiez vos versions** :
+   ```bash
+   php -v
+   composer -V
+   ```
+#### Installation manuelle
+Si Herd n'est pas disponible sur votre système :
 
-sous windows, ouvrez un powershell et exécutez la commande suivante :
+- Windows/macOS : Installez PHP via des outils comme Homebrew pour macOS ou un installateur PHP.
+- Linux : Installez PHP et Composer via votre gestionnaire de paquets :
+    ```bash
+    sudo apt update && sudo apt install php-cli composer
+    ```
+- Vérifiez que tout est bien installé :
+    ```bash
+    php -v
+    composer -V
+    ```
 
-Téléchargement de la dernière version de PHP (remplacez "x64" par "x86" si nécessaire)
-```bash
-Invoke-WebRequest -Uri https://windows.php.net/downloads/releases/php-8.2.12-Win32-vs16-x64.zip -OutFile php.zip
-```
-
-Extraction dans un répertoire (exemple : C:\php)
-```bash
-Expand-Archive -Path php.zip -DestinationPath C:\php
-```
-
-Ajout du répertoire PHP au PATH (si ce n'est pas déjà fait)
-```bash
-[System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\php", [System.EnvironmentVariableTarget]::Machine)
-```
-
-Si vous êtes sous un autre OS : https://www.php.net/manual/en/install.php
-
-Il vous faut aussi Composer, qui est un gestionnaire de dépendances pour PHP. Pour cela, exécutez la commande suivante dans votre powershell :
-
-Téléchargement de l'installateur de Composer
-```bash
-Invoke-WebRequest -Uri https://getcomposer.org/installer -OutFile composer-setup.php
-```
-
-Vérification du hash SHA-384 pour des raisons de sécurité
-```bash
-$HASH = Invoke-WebRequest -Uri https://composer.github.io/installer.sig -UseBasicParsing
-if ((Get-FileHash -Path composer-setup.php -Algorithm SHA384).Hash -ne $HASH.Content) {
-    Write-Host "Le fichier est corrompu. Installation annulée." -ForegroundColor Red
-    exit
-}
-```
-
-Installation de Composer
-```bash
-php composer-setup.php --install-dir=C:\php --filename=composer
-```
-
-Ajout de Composer au PATH
-```bash
-[System.Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\php", [System.EnvironmentVariableTarget]::Machine)
-```
-
-Suppression du fichier d'installation
-```bash
-Remove-Item composer-setup.php
-```
-
-Si vous êtes sous un autre OS : https://getcomposer.org/download/
-
-Vous devez également installer **git** pour pouvoir travailler avec le repository.
-
-https://git-scm.com/download/win
-
-Il vous faut également **NodeJS** pour le front-end. Pour cela, aller sur ce site : https://nodejs.org/en/download/
-
-<br/>
-
-### 🔐 Installation des dépendances
-
-Tout d'abord, assurez-vous que Laragon soit **démarré**. Si c'est fait, ouvrez le **Terminal** de Laragon. Cela devrait vous ouvrir une fenêtre Cmder. Si vous êtes familié avec le shell Linux, c'est la même syntaxe.
-
-Tout d'abord, rendez-vous dans le répertoire dans lequel vous avez **cloné** le repository. 
-
-Si vous ne l'avez pas encore fait, rendez-vous dans n'importe quelle console, naviguez vers votre répertoire et exécutez la commande suivante :
+### 💻 Node.js et pnpm
+#### Étape 1 : Installer Node.js
+- Téléchargez et installez la version LTS de Node.js depuis nodejs.org.
+- Vérifiez l'installation :
+    ```bash
+    node -v
+    ```
+#### Étape 2 : Installer pnpm
+Une fois Node.js installé, ajoutez pnpm globalement :
 
 ```bash
-git clone https://github.com/ETFaLeak3/ETFaLeak2
+npm install -g pnpm
+```
+Vérifiez l'installation de pnpm :
+
+```bash
+pnpm -v
 ```
 
-Une fois le repository cloné, retournez dans votre Cmder, dirigez-vous vers le répertoire DramaQuick, et exécutez les commandes suivantes :
+## ⚙️ Configuration initiale
+### 🛠️ Modifier le fichier php.ini
+Laravel requiert que la directive variables_order dans php.ini soit correctement configurée pour éviter des erreurs au démarrage.
 
+#### Comment faire ? :
+1. Ouvrez le fichier php.ini (trouvé via Herd ou dans votre installation PHP).
+2. Remplacez ou ajoutez la ligne suivante :
+    ```ini
+    variables_order = "GPCS"
+    ```
+3. Relancez PHP pour appliquer les changements.
+
+## 🚀 Installation
+Voici les étapes pour installer et configurer votre projet.
+
+### 1️⃣ Cloner le projet
+```bash
+git clone <url-du-dépôt>
+cd <nom-du-projet>
+```
+### 2️⃣ Installer les dépendances PHP
 ```bash
 composer install
 ```
-Cela aura pour effet d'installer les dépendances **PHP** du projet.
-Ensuite, exécutez la commande suivante :
-
+### 3️⃣ Installer les dépendances Node.js
 ```bash
-npm install
+pnpm install
 ```
-Cela aura pour effet d'installer les dépendances **NodeJS** du projet.
-
-<br/>
-
-### 💻 Lancer le projet en mode développement
-
-Pour lancer le projet en mode développement, vous aurez besoin de deux consoles. Ouvrez-en une première et exécutez la commande suivante dans le répertoire du projet :
-
+### 4️⃣ Configurer l'environnement
+#### Copier le fichier d'exemple .env :
 ```bash
-php artisan serve
+cp .env.example .env
 ```
-Vous aurez alors un message "[INFO] Server running on http://127.0.0.1:8000" C'est à cet URL que vous devrez vous rendre pour voir le site.
-
-Maintenant, vous allez devoir lancer le serveur de développement du **front-end**. Rendez-vous dans votre seconde console et faites la commande suivante :
-
-```bash
-npm run dev
-```
-
-Vous verrez alors la ligne "VITE v3.2.5 ready in ... ms". Cela signifie que le serveur **front-end** est s'est lancé avec succès.
-
-Vous pouvez désormais vous rendre à l'adresse http://127.0.0.1:8000 et voir le site !
-
-> 📝 **À noter**<br/>
-> Tout le front-end se situe dans `/resources/js/`. Grâce au *🔥 hot reload 🔥*, toute modification appliquée se verra en direct sur votre page, il n'y a pas besoin de relancer le serveur front-end.
-
-## 💾 Base de données
-
-Assurez-vous également que la partie DB de votre fichier .env est identique à la suivante :
-
-```dosini
-DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=dramaquick
-# DB_USERNAME=root
-# DB_PASSWORD=
-```
-
-*Libre à vous de modifier les paramètres, mais faites attention à les prendre en compte pour la suite.* 
-
-Tout d'abord, **si vous ne l'avez pas déjà mis en place**, vous devez créer une base de données. Pour cela, vous devez executer la commande suivante dans votre terminal dans le répertoire du projet :
-
+### 5️⃣ Configurer la base de données
+#### Appliquez les migrations pour créer les tables :
 ```bash
 php artisan migrate
 ```
 
-<br/>
-
-### 🛠️ Migrations de la base de données
-
-On appelle une migration toute modification appliquée sur la structure de la base de données. 
-
-#### ⚡ Appliquer des migrations
-
-Par défaut, si vous venez de créer la base de données, vous devrez faire la commande suivante dans votre terminal :
-
+## 🛠️ Lancer le projet
+### 🧑‍💻 Mode développement
+1. Démarrez le backend Laravel dans un premier terminal :
+    ```bash
+    php artisan serve
+    ```
+2. Lancez le frontend Svelte dans un second terminal :
+    ```bash
+    pnpm dev
+    ```
+### 🌐 Mode production (optionnel)
+1. Compilez les fichiers Svelte pour la production :
 ```bash
-php artisan migrate
+pnpm build
 ```
-Cela aura pour effet de mettre en place la première structure de la base de données.
+2. Configurez un serveur web (Apache, Nginx, etc.) pour servir le projet.
 
-#### ⏳ Status des migrations 
+## ❓ Dépannage
+### 🔧 Commandes manquantes ?
+- #### Assurez-vous que php, composer, et pnpm sont dans votre $PATH.
+### 🛑 Problèmes avec Laravel ?
+- #### Réinitialisez les caches :
+    ```bash
+    php artisan cache:clear
+    php artisan config:clear
+    php artisan route:clear
+    php artisan view:clear
+    ```
 
-Pour voir les migrations réalisées jusqu'à présent, vous pouvez faire la commande suivante :
+## 📚 Ressources supplémentaires
 
-```bash
-php artisan migrate:status
-```
-Si vous voyez "Ran" sous status, cela veut dire que la migration a bien été appliquée sur la base de données. Si vous voyez "Pending", c'est que ce n'est pas le cas, auquel cas faites la première commande ci-dessus.
+### 🖌️ Frontend
+- [Svelte 5 Documentation](https://svelte.dev/docs/svelte/overview) : Guide complet pour maîtriser Svelte 5.
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/) : Documentation officielle pour intégrer TypeScript à vos projets.
+- [TailwindCSS Documentation](https://tailwindcss.com/docs) : Tout ce que vous devez savoir sur ce framework CSS utilitaire.
+- [Next.shadcn-svelte](https://next.shadcn-svelte.com/docs) : Un framework puissant pour les composants UI basés sur TailwindCSS avec Svelte. (Attention ! Ne pas utilisé les composants utilisant SvelteKit !)
 
-#### 🧩 Créer une migration
+### 🔧 Backend
+- [Laravel Documentation](https://laravel.com/docs) : Guide officiel pour Laravel.
+- [Laravel Breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) : Installation et configuration de Breeze pour l'authentification légère.
+- [Laravel Socialite](https://laravel.com/docs/socialite) : Intégration de l'authentification OAuth pour les plateformes comme Google, Facebook, etc.
 
-Si vous venez à modifier la structure de la base de données, vous devrez exécuter la commande suivante pour créer une migration :
-
-```bash
-php artisan make:migration nom_de_la_migration
-```
-Si Laravel parvient à déterminer les migrations automatiquement, le nouveau fichier créé dans `/database/migrations/` sera pré-rempli. Sinon, vous devrez le remplir vous-même.
-
-> 📝 **À noter**<br/>
-> Les migrations créées ne sont pas appliquées par défaut. Vous devrez les appliquer vous-même.
-
-<br/>
 
 ## 🎯 Code de conduite
 
