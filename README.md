@@ -18,7 +18,13 @@
 
 ### 🔨 Installation des outils
 
-Tout d'abord, il vous est demandé d'installer **PHP**, pour cela, sous windows, ouvrez un powershell et exécutez la commande suivante :
+Tout d'abord, il vous est demandé d'installer **PHP**
+
+Pour cela, deux solutions, soit Herd Laravel disponible ici -> https://herd.laravel.com/windows (windows) | https://herd.laravel.com/ (macOS et UNIX) 
+
+Soit par commande :
+
+sous windows, ouvrez un powershell et exécutez la commande suivante :
 
 Téléchargement de la dernière version de PHP (remplacez "x64" par "x86" si nécessaire)
 ```bash
@@ -74,15 +80,7 @@ Vous devez également installer **git** pour pouvoir travailler avec le reposito
 
 https://git-scm.com/download/win
 
-Il vous faut également **NodeJS** pour le front-end. Pour cela, exécutez la commande suivante dans votre powershell :
-
-```bash
-Invoke-WebRequest -Uri https://nodejs.org/dist/v16.13.0/node-v16.13.0-x64.msi -OutFile node.msi
-Start-Process -Wait -FilePath node.msi
-Remove-Item node.msi
-```
-
-Si vous êtes sous un autre OS : https://nodejs.org/en/download/
+Il vous faut également **NodeJS** pour le front-end. Pour cela, aller sur ce site : https://nodejs.org/en/download/
 
 <br/>
 
