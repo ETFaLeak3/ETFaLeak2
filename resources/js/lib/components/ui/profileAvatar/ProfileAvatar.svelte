@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { router } from '@inertiajs/svelte';
     import * as Avatar from "$lib/components/ui/avatar";
     import Pencil from "lucide-svelte/icons/pencil";
     import { toast } from "svelte-sonner";
@@ -9,57 +10,10 @@
         fallback,
     }: { src: string | null | undefined, alt: string | null | undefined, fallback: string | null | undefined } = $props();
 
-    const checkFile = (file: File | undefined) => {
-        if (!file) {
-            return {
-                error: true,
-                message: "No file selected",
-            };
-        }
-        if (file.size > 5000000) {
-            return {
-                error: true,
-                message: "File size must be less than 5MB",
-            };
-        }
-        if (!file.type.includes("image")) {
-            return {
-                error: true,
-                message: "File must be an image",
-            };
-        }
-        return {
-            error: false,
-            message: "",
-        };
-    }
-
-    function updateAvatar(event: Event) {
-        const file = (event.target as HTMLInputElement).files?.[0];
-        const check = checkFile(file);
-        if (check.error) {
-            toast.error(check.message);
-            return;
-        }
-        // On fait une requete POST sur http://localhost:5173/API/users/avatars/updateAvatar avec le fichier et le filepath en paramètre
-        // Utilise un FormData pour envoyer le fichier
-        const data = new FormData();
-        const name = crypto.randomUUID()+file?.name;
-        if (file) {
-            data.append("file", file);
-        }
-        data.append("filename", name);
-        fetch("http://localhost:5173/API/users/avatar/updateAvatar", {
-            method: "POST",
-            body: data,
-        }).then((res) => {
-            console.log(res);
-            if (res.ok) {
-                toast.success("Avatar updated successfully");
-                src = '/images/avatars/'+name;
-            } else {
-                toast.error("An error occurred while updating the avatar");
-            }
+    function updateAvatar(e: Event) {
+        const file = e.target?.files[0];
+        router.post("/api/user/avatar", {
+            avatar: file,
         });
     }
 </script>

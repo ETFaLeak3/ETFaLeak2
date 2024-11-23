@@ -2,6 +2,7 @@
 	import type { WithElementRef } from "bits-ui";
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
 	import { type VariantProps, tv } from "tailwind-variants";
+	import { inertia } from "@inertiajs/svelte";
 
 	export const buttonVariants = tv({
 		base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4",
@@ -35,6 +36,7 @@
 		WithElementRef<HTMLAnchorAttributes> & {
 			variant?: ButtonVariant;
 			size?: ButtonSize;
+			method?: "get" | "post" | "put" | "patch" | "delete";
 		};
 </script>
 
@@ -48,6 +50,7 @@
 		ref = $bindable(null),
 		href = undefined,
 		type = "button",
+		method = "get",
 		children,
 		...restProps
 	}: ButtonProps = $props();
@@ -56,6 +59,7 @@
 {#if href}
 	<a
 		bind:this={ref}
+		use:inertia={{ href: href, method: method }}
 		class={cn(buttonVariants({ variant, size, className }))}
 		{href}
 		{...restProps}
