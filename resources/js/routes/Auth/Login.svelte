@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-    <title>Log in</title>
+    <title>Se connecter</title>
 </svelte:head>
 
 <Toast>

@@ -46,8 +46,8 @@
 <form onsubmit={(e) => {onSubmit(e)}}>
 <Card.Root class="mx-auto max-w-sm">
 	<Card.Header>
-		<Card.Title class="text-2xl">Login</Card.Title>
-		<Card.Description>Enter your email below to login to your account</Card.Description>
+		<Card.Title class="text-2xl">Connexion</Card.Title>
+		<Card.Description>Entrez votre email et votre mot de passe pour vous connecter à votre compte</Card.Description>
 	</Card.Header>
 	<Card.Content>
 		<div class="grid gap-4">
@@ -60,7 +60,7 @@
 					<Label for="password">Password</Label>
                     {#if canResetPassword}
                         <a href="/password/reset" class="ml-auto inline-block text-sm underline">
-                            Forgot your password?
+                            Mot de passe oublié?
                         </a>
                     {/if}
 				</div>
@@ -68,9 +68,9 @@
 			</div>
             <div class="flex items-center">
                 <Checkbox id="remember" bind:checked={$form.remember} aria-labelledby="remember-label" />
-                <Label id="remember-label" for="remember" class="ml-2">Remember me</Label>
+                <Label id="remember-label" for="remember" class="ml-2">Se souvenir de moi</Label>
             </div>
-			<Button type="submit" class="w-full" disabled={form.processing}>Login</Button>
+			<Button type="submit" class="w-full" disabled={form.processing}>Se connecter</Button>
             <Separator />
 			<Button 
                 type="button" 
@@ -89,7 +89,7 @@
                 {:else}
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
                 {/if}
-                Login with Github
+                Se connecter avec Github
             </Button>
             <Button 
                 type="button" 
@@ -108,12 +108,12 @@
                 {:else}
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-google"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945z" /></svg>
                 {/if}
-                Login with Google
+                Se connecter avec Google
             </Button>
 		</div>
 		<div class="mt-4 text-center text-sm">
-			Don't have an account?
-			<a href="/register" class="underline"> Sign up </a>
+			Pas encore de compte?
+			<a href="/register" class="underline"> S'inscrire </a>
 		</div>
 	</Card.Content>
 </Card.Root>

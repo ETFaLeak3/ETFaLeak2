@@ -2,7 +2,7 @@
     import BreezeValidationErrors from "$lib/components/ValidationErrors.svelte";
     import Toast from "@/layouts/Toast.svelte";
     import RegisterForm from "$lib/components/RegisterForm.svelte";
-    
+
     export let errors = {};
 
     let err = {};
@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-    <title>Register</title>
+    <title>S'inscrire</title>
 </svelte:head>
 
 <Toast>
