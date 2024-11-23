@@ -32,7 +32,7 @@
         form.email = email;
         form.password = password;
         $form.post("/login", {
-            onSuccess: () => $form.reset(),
+            onSuccess: () => $form.reset('password'),
         });
     };
 
@@ -53,7 +53,7 @@
 		<div class="grid gap-4">
 			<div class="grid gap-2">
 				<Label for="email">Email</Label>
-				<Input id="email" type="email" placeholder="m@example.com" bind:value={$form.email} autocomplete="email" required />
+				<Input id="email" type="email" placeholder="m@example.com" bind:value={$form.email} required />
 			</div>
 			<div class="grid gap-2">
 				<div class="flex items-center">
@@ -64,7 +64,7 @@
                         </a>
                     {/if}
 				</div>
-				<Input id="password" type="password" bind:value={$form.password} autocomplete="current-password" required />
+				<Input id="password" type="password" bind:value={$form.password} required />
 			</div>
             <div class="flex items-center">
                 <Checkbox id="remember" bind:checked={$form.remember} aria-labelledby="remember-label" />
