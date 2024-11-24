@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Title from '$lib/components/ui/title/Title.svelte';
+    import Title from '@/lib/components/ui/title/title.svelte';
     import Profile from '$lib/components/ui/profile/Profile.svelte';
     import { Button } from '$lib/components/ui/button';
 

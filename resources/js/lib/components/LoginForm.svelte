@@ -44,7 +44,7 @@
 </script>
 
 <form onsubmit={(e) => {onSubmit(e)}}>
-<Card.Root class="mx-auto max-w-sm">
+<Card.Root class="mx-auto max-w-sm bg-[#f3f3f3] dark:bg-[#0e0e0e]">
 	<Card.Header>
 		<Card.Title class="text-2xl">Connexion</Card.Title>
 		<Card.Description>Entrez votre email et votre mot de passe pour vous connecter à votre compte</Card.Description>

@@ -38,7 +38,7 @@
 </script>
 
 <form onsubmit={(e) => {onSubmit(e)}}>
-<Card.Root class="mx-auto max-w-sm">
+<Card.Root class="mx-auto max-w-sm bg-[#f3f3f3] dark:bg-[#0e0e0e]">
 	<Card.Header>
 		<Card.Title class="text-2xl">Inscription</Card.Title>
 		<Card.Description>Entrez un nom d'utilisateur, un email et un mot de passe pour créer un compte</Card.Description>

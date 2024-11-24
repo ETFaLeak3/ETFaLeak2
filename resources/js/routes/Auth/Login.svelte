@@ -1,6 +1,8 @@
 <script>
     import BreezeValidationErrors from "$lib/components/ValidationErrors.svelte";
-    import Toast from "@/layouts/Toast.svelte";
+    import { Layout } from "@/layouts";
+
+    import { Navbar } from "$lib/components/ui/navbar";
 
     import LoginForm from "$lib/components/LoginForm.svelte";
 
@@ -19,8 +21,10 @@
     <title>Se connecter</title>
 </svelte:head>
 
-<Toast>
+<Layout>
+    <Navbar title={true} link={false} />
     <div class="w-screen h-screen flex flex-col items-center justify-center">
+
         <BreezeValidationErrors class="mb-4" errors={err} />
 
         {#if status}
@@ -32,4 +36,4 @@
         <LoginForm canResetPassword={canResetPassword} />
 
     </div>
-</Toast>
+</Layout>
