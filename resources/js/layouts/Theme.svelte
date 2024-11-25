@@ -2,6 +2,8 @@
     import { ModeWatcher } from "mode-watcher";
     let { children } = $props();
 </script>
-    
-<ModeWatcher />       
-{@render children?.()}
+
+<div class="transition-all duration-300">
+    <ModeWatcher />       
+    {@render children?.()}
+</div>

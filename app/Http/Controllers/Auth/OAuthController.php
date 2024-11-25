@@ -37,10 +37,15 @@ class OAuthController extends Controller
                 'provider' => $provider,
                 'provider_id' => $socialUser->getId()
             ]);
+
+            // Enregistrer l'avatar de l'utilisateur s'il est disponible
+            if ($socialUser->getAvatar()) {
+                $this->storeAvatar($user->id, $socialUser->getAvatar());
+            }
         }
 
-        // Enregistrer ou mettre à jour l'avatar si disponible
-        if ($socialUser->getAvatar()) {
+        // On enregistre l'avatar de l'utilisateur s'il est disponible et qu'il n'est pas déjà enregistré
+        if ($socialUser->getAvatar() && !Storage::disk('public')->exists('avatars/' . $user->id . '.webp')) {
             $this->storeAvatar($user->id, $socialUser->getAvatar());
         }
 
@@ -48,7 +53,7 @@ class OAuthController extends Controller
         Auth::login($user, true);
 
         // Redirection
-        return redirect()->intended('/profile');
+        return redirect()->to('/profile')->with('status', 208);
     }
 
     /**
