@@ -10,13 +10,21 @@
 
     import { mode } from "mode-watcher";
 
-    onMount(() => {
-        let status = $page.props.flash.status;
+    let mounted: boolean = false;
 
-        if (status == 209) {
-            toast.success("Vous avez été déconnecté avec succès !");
-        }
+    onMount(() => {
+        mounted = true;
     });
+
+    $: {
+        if (mounted) {
+            let status = $page.props.flash.status;
+
+            if (status == 209) {
+                toast.success("Vous avez été déconnecté avec succès !");
+            }
+        }
+    };
 </script>
 
 <Layout>
@@ -24,7 +32,7 @@
         <div class="w-full h-full p-12">
             <div class="relative w-full h-full border bg-[#f3f3f3] dark:bg-[#0e0e0e] rounded-md">
                 <div class="w-full h-full z-10">
-                    <Navbar title={false} link={true} />
+                    <Navbar title={false} link={true} avatar={true}/>
                     <div class="flex flex-col items-center justify-center h-full">
                         <BlurIn class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-black/50 dark:from-white dark:to-white/50" word="ETFaLeak" />
                         <p class="text-lg font-medium text-center mt-4 text-black/90 dark:text-white/90">Bienvenue sur ETFaLeak, un site pour la Nuit de l'Info 2024 !</p>
