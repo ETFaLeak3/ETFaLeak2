@@ -19,6 +19,8 @@
                     toast.error("Le mot de passe doit contenir au moins 8 caractères");
                 } else if (errors[key] === "The password confirmation does not match.") {
                     toast.error("Les mots de passe ne correspondent pas");
+                } else if (errors[key] === "Please wait before retrying."){
+                    toast.error("Veuillez patienter avant de réessayer");
                 } else {
                     toast.error(errors[key]);
                 }

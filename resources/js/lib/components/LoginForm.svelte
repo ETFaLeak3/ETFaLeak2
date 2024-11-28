@@ -59,7 +59,7 @@
 				<div class="flex items-center">
 					<Label for="password">Password</Label>
                     {#if canResetPassword}
-                        <a href="/password/reset" class="ml-auto inline-block text-sm underline">
+                        <a href="/forgot-password" class="ml-auto inline-block text-sm underline">
                             Mot de passe oublié?
                         </a>
                     {/if}

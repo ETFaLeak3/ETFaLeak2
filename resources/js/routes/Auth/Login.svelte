@@ -1,6 +1,8 @@
 <script>
     import BreezeValidationErrors from "$lib/components/ValidationErrors.svelte";
     import { Layout } from "@/layouts";
+    import { onMount } from "svelte";
+    import { toast } from "svelte-sonner";
 
     import { Navbar } from "$lib/components/ui/navbar";
 
@@ -11,8 +13,19 @@
     export let canResetPassword;
     export let status;
 
+    let mounted = false;
+
+    onMount(() => {
+        mounted = true;
+    });
+
     $: {
         err = errors;
+        if (mounted) {
+            if (status == "Your password has been reset.") {
+                toast.success("Votre mot de passe a été réinitialisé.");
+            }
+        }
     }
 
 </script>
@@ -26,12 +39,6 @@
     <div class="w-screen h-screen flex flex-col items-center justify-center">
 
         <BreezeValidationErrors class="mb-4" errors={err} />
-
-        {#if status}
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {status}
-            </div>
-        {/if}
 
         <LoginForm canResetPassword={canResetPassword} />
 
