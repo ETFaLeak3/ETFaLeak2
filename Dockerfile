@@ -48,8 +48,9 @@ RUN composer install --optimize-autoloader
 RUN php artisan key:generate
 RUN php artisan migrate --seed --force
 
-RUN npm install
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm install
+RUN pnpm build
 
 EXPOSE 8000
 
