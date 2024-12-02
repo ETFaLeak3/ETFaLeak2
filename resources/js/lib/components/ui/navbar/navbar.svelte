@@ -25,7 +25,9 @@
                     </div>
                 {:else}
                     <div class="flex flex-row gap-4 z-10">
-                        <Button href="/logout" variant="link" size="sm" method="post">Se déconnecter</Button>
+                        <Button href="/logout" variant="link" size="sm" method="post" onclick={() => {
+                            page().visit("/logout");
+                        }}>Se déconnecter</Button>
                     </div>
                 {/if}
             {/if}
