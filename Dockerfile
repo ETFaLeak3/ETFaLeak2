@@ -18,7 +18,7 @@ COPY .env.example .env
 
 # Build frontend assets
 RUN pnpm build
-RUN ls -l /public/build
+RUN ls -l ./public/build
 
 # Stage 2: Base PHP image with Composer
 FROM php:8.2-fpm-alpine as php-builder
@@ -67,7 +67,7 @@ WORKDIR /var/www/html
 
 # Copy PHP and frontend build artifacts from previous stages
 COPY --from=php-builder /var/www/html /var/www/html
-COPY --from=node-builder /public/build /var/www/html/public
+COPY --from=node-builder ./public/build /var/www/html/public
 
 # Set correct permissions
 RUN chown -R www-data:www-data /var/www/html
