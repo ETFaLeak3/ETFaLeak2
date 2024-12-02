@@ -3,9 +3,12 @@ FROM node:20-alpine as node-builder
 
 WORKDIR /app
 
+# Install pnpm globally
+RUN npm install -g pnpm
+
 # Install Node.js dependencies
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install
 
 # Copy app files for the frontend build
 COPY resources/js/ ./resources/js/
@@ -14,7 +17,7 @@ COPY vite.config.js ./
 COPY .env.example .env
 
 # Build frontend assets
-RUN npm run build
+RUN pnpm build
 
 # Stage 2: Base PHP image with Composer
 FROM php:8.2-fpm-alpine as php-builder
