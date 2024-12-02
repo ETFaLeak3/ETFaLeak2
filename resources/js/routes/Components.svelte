@@ -6,7 +6,6 @@
     import { Button, buttonVariants } from "$lib/components/ui/button";
     import { Calendar as UICalendar } from "$lib/components/ui/calendar";
     import * as Card from "$lib/components/ui/card";
-    import { Checkbox } from "$lib/components/ui/checkbox";
     import Combobox from "$lib/components/ui/combobox/Combobox.svelte";
     import * as Command from "$lib/components/ui/command";
     import DatePicker from "$lib/components/ui/date-picker/DatePicker.svelte";
@@ -22,8 +21,7 @@
     import { Textarea } from "$lib/components/ui/textarea";
     import Texte from "$lib/components/ui/texte/Texte.svelte";
     import { toast } from "svelte-sonner";
-    import Title from "@/lib/components/ui/title/title.svelte";
-    import ProfileAvatar from "$lib/components/ui/profileAvatar/ProfileAvatar.svelte";
+    import { Title } from "$lib/components/ui/title"
 
     // Other import
 
