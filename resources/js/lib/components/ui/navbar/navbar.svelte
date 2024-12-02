@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from "@inertiajs/svelte";
+    import { page, inertia } from "@inertiajs/svelte";
     import { Button } from "$lib/components/ui/button";
     import { ThemeSwitcher } from "@/lib/components/ui/theme-switcher";
     import { UserNav } from "$lib/components/ui/user-nav";
@@ -25,7 +25,7 @@
                     </div>
                 {:else}
                     <div class="flex flex-row gap-4 z-10">
-                        <a href="/logout" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 text-primary underline-offset-4 hover:underline h-9 rounded-md px-3">Se déconnecter</a>
+                        <a use:inertia={{ href:"/logout", method:"post"}} class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 text-primary underline-offset-4 hover:underline h-9 rounded-md px-3">Se déconnecter</a>
                     </div>
                 {/if}
             {/if}

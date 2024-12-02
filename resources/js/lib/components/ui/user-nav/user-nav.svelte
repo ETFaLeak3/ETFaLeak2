@@ -47,7 +47,7 @@
 		</DropdownMenu.Group>
 		<DropdownMenu.Separator />
 		<DropdownMenu.Item>
-			<a href='/logout' class="w-full">Se déconnecter</a>
+			<a use:inertia={{ href:"/logout", method:"post"}} class="w-full">Se déconnecter</a>
 		</DropdownMenu.Item>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
