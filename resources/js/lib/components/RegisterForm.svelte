@@ -32,9 +32,8 @@
         form.password = password;
         form.password_confirmation = password_confirmation;
         $form.post("/register", {
-            onSuccess: () => $form.reset('password', 'password_confirmation'),
+            onSuccess: () => {$form.reset('password', 'password_confirmation')},
         });
-        window.location.href = "/register";
     };
 </script>
 
