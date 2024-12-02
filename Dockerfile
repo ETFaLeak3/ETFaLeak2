@@ -68,7 +68,7 @@ COPY --from=php-builder /var/www/html /var/www/html
 COPY --from=node-builder /app/public/build /var/www/html/public
 
 # Set correct permissions
-RUN chown -R www-data:www-data /var/www/html
+# RUN chown -R www-data:www-data /var/www/html
 
 # Expose the application port
 EXPOSE 9000
