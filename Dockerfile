@@ -49,12 +49,11 @@ COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Install Laravel dependencies
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader
-
 # Copy application files
 COPY . .
+
+# Install Laravel dependencies
+RUN composer install --no-dev --optimize-autoloader
 
 # Set correct permissions for Laravel storage
 RUN chown -R www-data:www-data storage bootstrap/cache
