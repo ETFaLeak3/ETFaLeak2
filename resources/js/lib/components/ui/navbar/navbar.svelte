@@ -25,7 +25,7 @@
                     </div>
                 {:else}
                     <div class="flex flex-row gap-4 z-10">
-                        <Button href="/logout" variant="link" size="sm" method="get">Se déconnecter</Button>
+                        <a href="/logout" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 text-primary underline-offset-4 hover:underline h-9 rounded-md px-3">Se déconnecter</a>
                     </div>
                 {/if}
             {/if}
