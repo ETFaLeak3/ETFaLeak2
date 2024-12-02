@@ -1,77 +1,56 @@
-# Stage 1: Base image for dependencies
-FROM node:20-alpine as node-builder
+FROM ubuntu:latest
 
-WORKDIR /app
+WORKDIR /var/www
 
-# Install pnpm globally
-RUN npm install -g pnpm
+ARG DEBIAN_FRONTEND noninteractive
 
-# Install Node.js dependencies
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install
+RUN apt update
 
-# Copy app files for the frontend build
-COPY resources/js/ ./resources/js/
-COPY resources/css/ ./resources/css/
-COPY vite.config.js ./
-COPY .env.example .env
+RUN apt install -y software-properties-common \
+	curl \
+	zip \
+	unzip
 
-# Build frontend assets
-RUN pnpm build
+RUN apt install -y php-cli \
+	php-fpm \
+	php-sqlite3 \
+	php-gd \
+	php-curl \
+	php-imap \
+	php-mbstring \
+	php-xml \
+	php-zip \
+	php-bcmath \
+	php-soap \
+	php-intl \
+	php-readline \
+	php-ldap \
+	php-msgpack \
+	php-igbinary \
+	php-redis \
+	php-memcached \
+	php-pcov \
+	php-imagick \
+	php-xdebug
 
-# Stage 2: Base PHP image with Composer
-FROM php:8.2-fpm-alpine as php-builder
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt update && apt install -y nodejs
 
-# Install PHP extensions and system dependencies
-RUN apk add --no-cache \
-    bash \
-    git \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    libwebp-dev \
-    libzip-dev \
-    zip \
-    unzip \
-    curl \
-    oniguruma-dev \
-    freetype-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
-    && docker-php-ext-install -j$(nproc) \
-    gd \
-    zip \
-    pdo \
-    pdo_mysql \
-    mbstring \
-    opcache
+RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-# Install Composer
-COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
+RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
-WORKDIR /var/www/html
-
-# Copy application files
 COPY . .
+RUN cp .env.example .env
 
-# Install Laravel dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
-# Set correct permissions for Laravel storage
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN php artisan key:generate
+RUN php artisan migrate --seed --force
 
-# Stage 3: Final Production Image
-FROM php:8.2-fpm-alpine
+RUN npm install
+RUN npm run build
 
-WORKDIR /var/www/html
+EXPOSE 8000
 
-# Copy PHP and frontend build artifacts from previous stages
-COPY --from=php-builder /var/www/html /var/www/html
-COPY --from=node-builder /app/public/build /var/www/html/public
-
-# Set correct permissions
-# RUN chown -R www-data:www-data /var/www/html
-
-# Expose the application port
-EXPOSE 9000
-
-# Start PHP-FPM server
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
