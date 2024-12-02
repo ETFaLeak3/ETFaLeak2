@@ -34,6 +34,7 @@
         $form.post("/register", {
             onSuccess: () => $form.reset('password', 'password_confirmation'),
         });
+        window.location.href = "/register";
     };
 </script>
 

@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->flash('status', 208);
 
-        return redirect()->to('profile');
+        return redirect()->to('/profile');
     }
 
     /**
