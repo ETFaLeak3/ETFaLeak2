@@ -11,7 +11,7 @@ RUN npm install
 COPY resources/js/ ./resources/js/
 COPY resources/css/ ./resources/css/
 COPY vite.config.js ./
-COPY .env.production .env
+COPY .env.example .env
 
 # Build frontend assets
 RUN npm run build
