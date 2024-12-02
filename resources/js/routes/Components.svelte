@@ -21,7 +21,6 @@
     import { Textarea } from "$lib/components/ui/textarea";
     import Texte from "$lib/components/ui/texte/Texte.svelte";
     import { toast } from "svelte-sonner";
-    import { Title } from "$lib/components/ui/title"
 
     // Other import
 
@@ -350,9 +349,5 @@
     >
         Show Toast
     </Button>
-
-    <Label>Title</Label>
-
-    <Title>Title</Title>
 </div>
 </Toast>
