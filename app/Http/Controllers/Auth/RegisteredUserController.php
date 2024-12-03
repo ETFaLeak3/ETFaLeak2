@@ -16,6 +16,10 @@ use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
+    public function redirect()
+    {
+        return Inertia::render('Profile');
+    }
     /**
      * Display the registration view.
      */
@@ -51,6 +55,6 @@ class RegisteredUserController extends Controller
 
         $request->session()->flash('status', 207);
 
-        return redirect()->route('profile.show');
+        return to_route('profile');
     }
 }
