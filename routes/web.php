@@ -20,7 +20,7 @@ Route::get('/components', function () {
 
 Route::get('/profile', function () {
     return Inertia::render('Profile');
-})->middleware(['auth', 'verified'])->name('profile');
+})->middleware(['auth', 'verified'])->name('profile.show');
 
 Route::get('/about', function () {
     return Inertia::render('About');
