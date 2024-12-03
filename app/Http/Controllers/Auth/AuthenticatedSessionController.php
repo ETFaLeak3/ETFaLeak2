@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
@@ -35,13 +35,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->flash('status', 208);
 
-        return to_route('Auth/Login');
+        $basepath = env('APP_URL',null);
+
+        return Inertia::location($basepath.'login');
     }
 
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
 
@@ -51,6 +53,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->flash('status', 209);
 
-        return to_route('home');
+        $basepath = env('APP_URL',null);
+
+        return Inertia::location($basepath);
     }
 }

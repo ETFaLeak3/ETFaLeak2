@@ -32,7 +32,7 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'token' => 'required',
@@ -59,7 +59,10 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         if ($status == Password::PASSWORD_RESET) {
-            return redirect()->route('login')->with('status', __($status));
+            session()->flash('status', __($status));
+            $basepath = env('APP_URL',null);
+
+            return Inertia::location($basepath.'login');
         }
 
         throw ValidationException::withMessages([
