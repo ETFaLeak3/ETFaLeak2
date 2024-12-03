@@ -55,6 +55,6 @@ class RegisteredUserController extends Controller
 
         $request->session()->flash('status', 207);
 
-        return redirect()->to('/profile');
+        return to_route("profile.show");
     }
 }
