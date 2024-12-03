@@ -8,11 +8,6 @@
 
     let {canResetPassword} : {canResetPassword: boolean} = $props();
 
-    let name: string | null = $state(null);
-    let email: string | null = $state(null);
-    let password: string | null = $state(null);
-    let password_confirmation: string | null = $state(null);
-
     let isRedirecting : { [key: string]: boolean } = {
         'google': false,
         'github': false,
@@ -27,10 +22,6 @@
 
     const onSubmit = (e: Event) => {
         e.preventDefault();
-        form.name = name;
-        form.email = email;
-        form.password = password;
-        form.password_confirmation = password_confirmation;
         router.post("/register", form);
     };
 </script>
