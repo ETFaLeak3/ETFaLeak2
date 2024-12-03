@@ -45,21 +45,21 @@
 		<div class="grid gap-4">
             <div class="grid gap-2">
 				<Label for="name">Nom d'utilisateur</Label>
-				<Input id="name" type="text" placeholder="John Doe" bind:value={$form.name} required />
+				<Input id="name" type="text" placeholder="John Doe" bind:value={form.name} required />
 			</div>
 			<div class="grid gap-2">
 				<Label for="email">Email</Label>
-				<Input id="email" type="email" placeholder="m@example.com" bind:value={$form.email} required />
+				<Input id="email" type="email" placeholder="m@example.com" bind:value={form.email} required />
 			</div>
 			<div class="grid gap-2">
 				<Label for="password">Mot de passe</Label>
-				<Input id="password" type="password" bind:value={$form.password} required />
+				<Input id="password" type="password" bind:value={form.password} required />
 			</div>
             <div class="grid gap-2">
                 <Label for="password_confirmation">Confirmation du mot de passe</Label>
-                <Input id="password_confirmation" type="password" bind:value={$form.password_confirmation} required />
+                <Input id="password_confirmation" type="password" bind:value={form.password_confirmation} required />
             </div>
-			<Button type="submit" class="w-full" disabled={form.processing}>Register</Button>
+			<Button type="submit" class="w-full">Register</Button>
 		</div>
 		<div class="mt-4 text-center text-sm">
 			Vous avez déjà un compte ?
