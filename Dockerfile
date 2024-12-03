@@ -41,7 +41,6 @@ RUN apt clean && rm -rf /var/lib/apt/lists/*
 RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
 COPY . .
-RUN cp .env.example .env
 
 RUN composer install --optimize-autoloader
 

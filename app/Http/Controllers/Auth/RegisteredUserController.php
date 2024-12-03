@@ -55,6 +55,8 @@ class RegisteredUserController extends Controller
 
         $request->session()->flash('status', 207);
 
-        return Inertia::location('https://etfaleak.stellardev.fr/profile');
+        $basepath = env('APP_URL',null);
+
+        return Inertia::location($basepath.'profile');
     }
 }
