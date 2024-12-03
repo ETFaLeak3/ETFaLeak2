@@ -4,7 +4,7 @@
 	import { Input } from "$lib/components/ui/input/index.js";
 	import { Label } from "$lib/components/ui/label/index.js";
 
-    import { Link, useForm } from "@inertiajs/svelte";
+    import { router } from "@inertiajs/svelte";
 
     let {canResetPassword} : {canResetPassword: boolean} = $props();
 
@@ -18,12 +18,12 @@
         'github': false,
     }
 
-    let form = useForm({
+    let form = {
         name: null,
         email: null,
         password: null,
         password_confirmation: null,
-    });
+    };
 
     const onSubmit = (e: Event) => {
         e.preventDefault();
@@ -31,9 +31,7 @@
         form.email = email;
         form.password = password;
         form.password_confirmation = password_confirmation;
-        $form.post("/register", {
-            onSuccess: () => {$form.reset('password', 'password_confirmation')},
-        });
+        router.post("/register", form);
     };
 </script>
 
