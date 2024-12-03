@@ -1,8 +1,25 @@
 <script lang="ts">
+    import { page } from "@inertiajs/svelte";
     import { Theme, Toast } from "@/layouts/";
+    import { onMount } from "svelte";
     import 'animate.css';
     
-    let { children } = $props();
+    export let children : any;
+
+    let mounted: boolean = false;
+
+    onMount(() => {
+        mounted = true;
+    });
+
+    $: {
+        if (mounted) {
+            if ($page.props.flash.href) {
+                window.location.href = $page.props.flash.href;
+            }
+        }
+    };
+
 </script>
 
 <Theme>

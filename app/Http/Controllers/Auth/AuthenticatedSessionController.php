@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request): Response
     {
         $request->authenticate();
 
@@ -35,7 +35,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->flash('status', 208);
 
-        return redirect()->intended(route('profile', absolute: false));
+        $request->session()->flash('href', '/profile');
+
+        return redirect('/profile');
     }
 
     /**
@@ -51,6 +53,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->flash('status', 209);
 
-        return redirect()->intended('/');
+        $request->session()->flash('href', '/');
+
+        return redirect('/');
     }
 }
