@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -55,6 +55,6 @@ class RegisteredUserController extends Controller
 
         $request->session()->flash('status', 207);
 
-        return to_route("profile.show");
+        return Inertia::location('/profile');
     }
 }
