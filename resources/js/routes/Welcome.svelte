@@ -7,6 +7,7 @@
     import { Navbar } from "@/lib/components/ui/navbar";
     import { BlurIn } from "@/lib/components/ui/blur-in";
     import { toast } from "svelte-sonner";
+    import { BorderBeam } from "@/lib/components/ui/border-beam";
 
     import { mode } from "mode-watcher";
 
@@ -31,6 +32,7 @@
     <main class="w-full h-full bg-white dark:bg-black">
         <div class="w-full h-full p-12">
             <div class="relative w-full h-full border bg-[#f3f3f3] dark:bg-[#0e0e0e] rounded-md">
+                <BorderBeam colorFrom={$mode === "dark" ? "#ffffff" : "#000000"} colorTo={$mode === "dark" ? "#ffffff" : "#000000"} />
                 <div class="w-full h-full z-10">
                     <Navbar title={false} link={true} avatar={true}/>
                     <div class="flex flex-col items-center justify-center h-full">
