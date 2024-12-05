@@ -37,22 +37,25 @@
 <!--
 <Layout>
     <main class="w-full h-full bg-white dark:bg-black">
-        <div class="w-full h-full p-12">
-            <div class="relative w-full h-full border bg-[#f3f3f3] dark:bg-[#0e0e0e] rounded-md">
-                <BorderBeam colorFrom={$mode === "dark" ? "#ffffff" : "#000000"} colorTo={$mode === "dark" ? "#ffffff" : "#000000"} />
+        <div class="w-full h-full">
+            <div class="relative w-full h-full border bg-[#f3f3f3] dark:bg-[#0e0e0e]">
                 <div class="w-full h-full z-10">
-                    <Navbar title={false} link={true} avatar={true}/>
-                    <div class="flex flex-col items-center justify-center h-full">
-                        <BlurIn class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-black to-black/50 dark:from-white dark:to-white/50" word="ETFaLeak" />
-                        <p class="text-lg font-medium text-center mt-4 text-black/90 dark:text-white/90">Bienvenue sur ETFaLeak, un site pour la Nuit de l'Info 2024 !</p>
+                    <Navbar title={true} link={true} avatar={true}/>
+                    <div class="flex flex-col items-center justify-center h-full gap-60 z-10">
+                        <div class="flex flex-col items-center gap-12">
+                            <h1 class="text-4xl font-extrabold">Sauvez le dieu des oceans !</h1>
+                            <p class="px-64 text-xl text-center z-10">Incarnez un poisson-guérisseur chargé de soigner Thalassor, le dieu des océans, dont les organes vitaux sont en danger. Explorez son corps gigantesque à travers des mini-jeux palpitants : réparez son cœur, purifiez ses poumons, et détoxifiez son foie pour restaurer son équilibre.</p>
+                        </div>
+                        <Button class="text-2xl p-6 z-10" href="/login">Jouer</Button>
                     </div>
                 </div>
-                {#if $mode === "dark"}
-                    <Particles className="absolute inset-0" refresh={true} color={"#ffffff"} />
-                {:else}
-                    <Particles className="absolute inset-0" refresh={true} color={"#000000"} />
-                {/if}
             </div>
         </div>
+        {#if $mode === "light"}
+            <img src="/wavesLight.png" class="fixed bottom-0 right-0 w-full h-1/2 z-0 p-0" />
+        {/if}
+        {#if $mode === "dark"}
+            <img src="/wavesDark.png" class="fixed bottom-0 right-0 w-full h-1/2 z-0 p-0" />
+        {/if}
     </main>
 </Layout>-->
