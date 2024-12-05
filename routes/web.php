@@ -14,6 +14,15 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/poumons', function () {
+    return Inertia::render('Poumons', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('poumons');
+
 Route::get('/components', function () {
     return Inertia::render('Components');
 })->name('components');

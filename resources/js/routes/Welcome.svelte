@@ -8,6 +8,7 @@
     import { BlurIn } from "@/lib/components/ui/blur-in";
     import { toast } from "svelte-sonner";
     import { BorderBeam } from "@/lib/components/ui/border-beam";
+    import Prolifera from "@/lib/components/ui/prolifera/Prolifera.svelte";
 
     import { mode } from "mode-watcher";
 
@@ -28,6 +29,12 @@
     };
 </script>
 
+
+<Prolifera></Prolifera>
+
+
+
+<!--
 <Layout>
     <main class="w-full h-full bg-white dark:bg-black">
         <div class="w-full h-full p-12">
@@ -48,4 +55,4 @@
             </div>
         </div>
     </main>
-</Layout>
+</Layout>-->
