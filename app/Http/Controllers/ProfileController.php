@@ -60,4 +60,41 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function addScore(Request $request)
+    {
+        $request->validate([
+            'score' => ['required', 'integer'],
+        ]);
+
+        $user = $request->user();
+
+        $user->score += $request->score;
+
+        $user->save();
+
+        $basepath = env('APP_URL',null);
+
+        return Inertia::location($basepath.'carte');
+    }
+
+    public function resetScore(Request $request)
+    {
+        $user = $request->user();
+
+        $user->score = 0;
+
+        $user->save();
+
+        $basepath = env('APP_URL',null);
+
+        return Inertia::location($basepath.'carte');
+    }
+
+    public function showScore(Request $request)
+    {
+        $user = $request->user();
+
+        return $user->score;
+    }
 }
