@@ -8,7 +8,7 @@
     import { BlurIn } from "@/lib/components/ui/blur-in";
     import { toast } from "svelte-sonner";
     import { BorderBeam } from "@/lib/components/ui/border-beam";
-    import Prolifera from "@/lib/components/ui/prolifera/Prolifera.svelte";
+    import { Button } from "@/lib/components/ui/button";
 
     import { mode } from "mode-watcher";
 
@@ -29,12 +29,6 @@
     };
 </script>
 
-
-<Prolifera></Prolifera>
-
-
-
-<!--
 <Layout>
     <main class="w-full h-full bg-white dark:bg-black">
         <div class="w-full h-full">
@@ -58,4 +52,4 @@
             <img src="/wavesDark.png" class="fixed bottom-0 right-0 w-full h-1/2 z-0 p-0" />
         {/if}
     </main>
-</Layout>-->
+</Layout>
