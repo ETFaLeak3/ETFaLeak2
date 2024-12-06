@@ -25,7 +25,7 @@
   
     // Variables de jeu
     let keys = { space: false };
-    let player, bubbles, enemies, score, gameOver, lastShotTime, lastEnemySpawnTime;
+    let player, bubbles, enemies, score, gameOver, gameWon, lastShotTime, lastEnemySpawnTime;
     const shotDelay = 500;
     const enemySpawnDelay = 2500;
     let speedMultiplier = 1;
@@ -66,6 +66,7 @@
       enemies = [];
       score = 0;
       gameOver = false;
+      gameWon = false;
       lastShotTime = 0;
       lastEnemySpawnTime = Date.now();
       backgroundX = 0;
@@ -74,7 +75,7 @@
   
     function handleKeyDown(e) {
       if (e.code === "Space") {
-        if (gameOver) {
+        if (gameOver || gameWon) {
           resetGame();
           gameLoop();
         } else {
@@ -116,14 +117,16 @@
     }
   
     function spawnEnemy() {
-      enemies.push({
-        x: canvas.clientWidth,
-        y: Math.random() * (canvas.clientHeight - 64),
-        width: canvas.clientWidth * 0.08,
-        height: canvas.clientHeight * 0.08,
-        dx: 4 * speedMultiplier,
-      });
-      lastEnemySpawnTime = Date.now();
+      if (!gameWon) {
+        enemies.push({
+          x: canvas.clientWidth,
+          y: Math.random() * (canvas.clientHeight - 64),
+          width: canvas.clientWidth * 0.08,
+          height: canvas.clientHeight * 0.08,
+          dx: 4 * speedMultiplier,
+        });
+        lastEnemySpawnTime = Date.now();
+      }
     }
   
     function updateSpeedMultiplier() {
@@ -131,15 +134,16 @@
     }
   
     function gameLoop() {
-      if (gameOver) {
-        ctx.fillStyle = "red";
+      if (gameOver || gameWon) {
+        // Affichage de la fin du jeu
+        ctx.fillStyle = "white";
         ctx.font = `${canvas.width * 0.05}px Arial`;
-        ctx.fillText(
-          score >= 10 ? "You Win!" : "You Lose!",
-          canvas.width / 2 - 100,
-          canvas.height / 2
-        );
-        ctx.fillText(`Score: ${score}`, canvas.width / 2 - 100, canvas.height / 2 + 50);
+        ctx.textAlign = "center";
+        ctx.fillText(gameWon ? "Bravo, Vous avez Gagné!" : "Game Over", canvas.width / 2, canvas.height / 2 - 30);
+        ctx.fillText(`Votre Score: ${score}`, canvas.width / 2, canvas.height / 2 + 20);
+  
+        // Dessin du bouton pour revenir au menu
+        drawGameOverScreen();
         return;
       }
   
@@ -248,7 +252,32 @@
         spawnEnemy();
       }
   
+      if (score >= 1) {
+        gameWon = true;
+      }
+  
       requestAnimationFrame(gameLoop);
+    }
+  
+    function drawGameOverScreen() {
+      const button = document.createElement("button");
+      button.textContent = "Retour au Menu";
+      button.style.position = "absolute";
+      button.style.top = "50%";
+      button.style.left = "50%";
+      button.style.transform = "translate(-50%, -50%)";
+      button.style.padding = "20px";
+      button.style.fontSize = "20px";
+      button.style.backgroundColor = "#4CAF50";
+      button.style.color = "white";
+      button.style.border = "none";
+      button.style.borderRadius = "5px";
+      button.style.cursor = "pointer";
+      button.onclick = () => {
+        // Redirect to menu
+        window.location.href = "/";
+      };
+      document.body.appendChild(button);
     }
   </script>
   
@@ -262,4 +291,5 @@
     }
   </style>
   
-  <canvas bind:this={canvas} width={window.innerWidth} height={window.innerHeight}></canvas>  
+  <canvas bind:this={canvas} width={window.innerWidth} height={window.innerHeight}></canvas>
+  
