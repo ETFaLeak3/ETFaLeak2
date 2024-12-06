@@ -40,7 +40,7 @@
                             <h1 class="text-4xl font-extrabold">Sauvez le dieu des oceans !</h1>
                             <p class="px-64 text-xl text-center z-10">Incarnez un poisson-guérisseur chargé de soigner Thalassor, le dieu des océans, dont les organes vitaux sont en danger. Explorez son corps gigantesque à travers des mini-jeux palpitants : réparez son cœur, purifiez ses poumons, et détoxifiez son foie pour restaurer son équilibre.</p>
                         </div>
-                        <Button class="text-2xl p-6 z-10" href="/login">Jouer</Button>
+                        <Button class="text-2xl p-6 z-10" onclick={() => {window.location.href='/menu'}}>Jouer</Button>
                     </div>
                 </div>
             </div>

@@ -80,7 +80,15 @@
             // Check if the player is dead
             if (player.health <= 0) {
                 alert('You died!');
-                window.location.reload();
+                window.location.href = '/menu';
+                // On attend la redirection pour arrêter le jeu
+                clearInterval(countdownInterval);
+            }
+
+            // Check if the player has won
+            if (countdown <= 0) {
+                alert('You won!');
+                window.location.href = '/menu';
             }
         }
     };

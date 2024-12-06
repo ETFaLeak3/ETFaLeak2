@@ -275,7 +275,7 @@
       button.style.cursor = "pointer";
       button.onclick = () => {
         // Redirect to menu
-        window.location.href = "/";
+        window.location.href = "/menu";
       };
       document.body.appendChild(button);
     }

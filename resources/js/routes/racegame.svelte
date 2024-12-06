@@ -299,7 +299,7 @@ function checkVictory() {
     </div>
     <div class="victory-message" style="display: none;" id="victory-message">
         🎉 Félicitations ! Vous avez gagnez avec <span id="points"></span> points ! 🎉
-        <button onclick={() => {window.location.href = "/";}} class="bg-green-500 text-white px-4 py-2 rounded-lg mt-4">Retour au menu</button>
+        <button onclick={() => {window.location.href = "/menu";}} class="bg-green-500 text-white px-4 py-2 rounded-lg mt-4">Retour au menu</button>
     </div>
 
     <div id="timer-display" style="
