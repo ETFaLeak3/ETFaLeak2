@@ -64,7 +64,7 @@
             width: width * 0.1,
             height: height * 0.1,
             dy: 0,
-            gravity: 0.5,
+            gravity: 0.4,
             jumpStrength: -height * 0.015,
             image: playerImage,
         };

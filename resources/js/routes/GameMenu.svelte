@@ -25,6 +25,15 @@
                     Utilisez les flèches du clavier pour vous déplacer, et la
                     touche entrée pour sélectionner des améliorations.
                 </p>
+                <p class="hidden group-hover:block font-normal">
+                    Le cerveau humain gère tout dans notre corps, notamment le
+                    contrôle de la température corporelle. Quand notre
+                    température monte c'est que nous sommes malade. Il en est de
+                    même pour les océans, leur température à augmenté ces
+                    dernières années et cela impacte la faune et la flore marine
+                    négativement. Il faut donc essayer de limiter cette hausse
+                    de la température.
+                </p>
             </button>
 
             <button
@@ -41,6 +50,16 @@
                     elles risquent de contaminer toute la flore qui s'y trouve.
                     Cliquez sur les algues rouges pour les mettre hors d'état de
                     nuire avant qu'elles ne s'attaquent aux algues vertes.
+                </p>
+
+                <p class="hidden group-hover:block font-normal">
+                    Certaines espèces d'algues peut être invasives, ces algues
+                    recouvrent les fonds marins et étouffent la faune et la
+                    flore marine. Protéger les fonds marins de ces espèces qui
+                    détruisent les écosystèmes est primordial pour notre
+                    planète, de la même manière que protéger nos poumons de
+                    substances nocives est très important pour vivre en bonne
+                    santé.
                 </p>
             </button>
 
@@ -60,6 +79,13 @@
                     clavier et cliquez le plus vite possible avec votre souris
                     pour prendre de la vitesse !
                 </p>
+                <p class="hidden group-hover:block font-normal">
+                    Les planctons participent grandement à la filtration des
+                    impuretés dans les océans, leur destruction est donc très
+                    nocive pour l'environnement. On peut comparer leur action à
+                    celle des reins, qui filtrent eux aussi les impuretés de
+                    notre corps.
+                </p>
             </button>
 
             <button
@@ -77,6 +103,14 @@
                     pour nettoyer l'estomac de Thalassor en éliminant les sacs
                     plastiques ! Utilisez la barre espace pour gagner de la
                     hauteur et la touche S pour tirer.
+                </p>
+                <p class="hidden group-hover:block font-normal">
+                    Le plastique présent dans les océans est un fléau pour la
+                    faune comme pour la flore. Il s'accroche partout et
+                    contamine presque toutes les espèces, sans même parler des
+                    microplastiques. Ce serait comme avoir des morceaux solides
+                    indigestibles dans notre estomac, il nous faut donc éviter
+                    de déverser plus de plastique dans les océans.
                 </p>
             </button>
         </div>
