@@ -6,7 +6,7 @@
  * Author : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  * For : Polytech Tours
  * ----
- * Last Modified : Friday, 6th December 2024 @ 01:35:38 +01:00
+ * Last Modified : Friday, 6th December 2024 @ 05:01:50 +01:00
  * By : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  */
 
@@ -49,7 +49,7 @@ export class EnemyList {
 
         // Spawn new enemies
         // Countdown is in seconds. The lower the countdown, the higher the spawn rate
-        let maxEnemies = (600 - countdown) * 2;
+        let maxEnemies = 300 - countdown;
         if (this.enemies.length < maxEnemies) {
             this.spawn_enemy(player, player.mapSize);
         }
@@ -64,9 +64,16 @@ export class EnemyList {
     }
 
     spawn_enemy(player, mapSize) {
-        let x = Math.floor(Math.random() * mapSize);
-        let y = Math.floor(Math.random() * mapSize);
-        let enemy = new Enemy(x, y, player.bulletList);
-        this.enemies.push(enemy);
+        let valid = false;
+        while (!valid) {
+            let x = Math.floor(Math.random() * mapSize);
+            let y = Math.floor(Math.random() * mapSize);
+            // Check if the enemy is not too close to the player
+            if (Math.abs(x - player.x) > 100 && Math.abs(y - player.y) > 100) {
+                valid = true;
+                let enemy = new Enemy(x, y, player.bulletList);
+                this.enemies.push(enemy);
+            }
+        }
     }
 }

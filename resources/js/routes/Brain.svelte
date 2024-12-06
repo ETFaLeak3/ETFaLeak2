@@ -20,7 +20,7 @@
     let player = new Player(mapSize, bullets, camera);
 
     // Create a 10 minutes countdown timer
-    let countdown = 600;
+    let countdown = 300;
     let countdownInterval = setInterval(() => {
         if (!player.isUpgrading) {
             countdown--;

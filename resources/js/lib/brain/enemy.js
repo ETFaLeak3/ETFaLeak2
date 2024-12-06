@@ -6,7 +6,7 @@
  * Author : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  * For : Polytech Tours
  * ----
- * Last Modified : Thursday, 5th December 2024 @ 23:39:07 +01:00
+ * Last Modified : Friday, 6th December 2024 @ 05:00:33 +01:00
  * By : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  */
 
@@ -17,7 +17,7 @@ export class Enemy {
         this.spawnY = y;
         this.x = x;
         this.y = y;
-        this.size = 50;
+        this.size = 70;
         this.health = 100;
         this.damage = 10;
         this.speed = 1;
@@ -27,7 +27,7 @@ export class Enemy {
 
         // Textures
         this.texture = new Image();
-        let path = '/brainSrc/ship.png';
+        let path = '/brainSrc/ptiteraie.png';
         this.texture.src = path;
         this.redTexture = new Image();
         this.texture.onload = () => {
@@ -83,7 +83,7 @@ export class Enemy {
         let dx = player.x - this.x;
         let dy = player.y - this.y;
         let angle = Math.atan2(dy, dx);
-        ctx.rotate(angle + Math.PI / 2);
+        ctx.rotate(angle - Math.PI / 2);
         let texture = this.texture;
         if (this.redframes > 0) {
             texture = this.redTexture;

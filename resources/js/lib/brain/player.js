@@ -6,7 +6,7 @@
  * Author : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  * For : Polytech Tours
  * ----
- * Last Modified : Friday, 6th December 2024 @ 01:40:13 +01:00
+ * Last Modified : Friday, 6th December 2024 @ 05:02:33 +01:00
  * By : Pacôme Renimel (pacome.renimel--lamire@etu.univ-tours.fr)
  */
 
@@ -29,7 +29,7 @@ export class Player {
     constructor(mapSize, bulletList, camera) {
         this.x = 1000;
         this.y = 1000;
-        this.size = 50;
+        this.size = 70;
         this.velx = 0;
         this.vely = 0;
         this.drag = 0.9;
@@ -49,7 +49,7 @@ export class Player {
         this.nextLevelExperience = 100;
         this.nextLevelMultiplier = 1.3;
         this.damage = 30;
-        this.bulletSpeed = 5;
+        this.bulletSpeed = 10;
         this.bulletSize = 30;
         this.upgradeCoef = 1.5;
 
@@ -64,7 +64,7 @@ export class Player {
         this.texture = new Image();
         this.whiteTexture = new Image();
         // The texture
-        let path = '/brainSrc/ship.png';
+        let path = '/brainSrc/ptitrekin.png';
         this.texture.src = path;
         // Add a white overlay to the player's whiteTexture
         this.texture.onload = () => {
@@ -176,7 +176,7 @@ export class Player {
             (this.size * this.health) / 100,
             5,
         );
-        ctx.rotate(Math.atan2(this.vely, this.velx) + Math.PI / 2);
+        ctx.rotate(Math.atan2(this.vely, this.velx) - Math.PI / 2);
         // If the player is currently invincible, draw the player sprite with a lower opacity
         let texture;
         if (this.iFrame > 0 && this.iFrame % 10 < 5) {
