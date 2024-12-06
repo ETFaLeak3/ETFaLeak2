@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('/poumons', function () {
     return Inertia::render('Poumons');
-})->middleware(['auth', 'verified'])->name('poumons');
+})->name('poumons');
 
 Route::get('/components', function () {
     return Inertia::render('Components');
@@ -32,11 +32,11 @@ Route::get('/about', function () {
 
 Route::get('/shrimpyshot', function () {
     return Inertia::render('ShrimpyShot');
-})->middleware(['auth', 'verified'])->name('shrimpyshot');
+})->name('shrimpyshot');
 
 Route::get('/race', function () {
     return Inertia::render('racegame');
-})->middleware(['auth', 'verified'])->name('racegame');
+})->name('racegame');
 
 Route::get('/menu', function () {
     return Inertia::render('GameMenu');
@@ -44,7 +44,7 @@ Route::get('/menu', function () {
 
 Route::get('/brain', function () {
     return Inertia::render('Brain');
-})->middleware(['auth', 'verified'])->name('brain');
+})->name('brain');
 
 /* Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
