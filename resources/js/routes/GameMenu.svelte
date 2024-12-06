@@ -17,36 +17,68 @@
                 >Cerveau
 
                 <p class="hidden group-hover:block font-normal">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Laboriosam temporibus, error nulla illum assumenda est odio
-                    cum magnam necessitatibus id numquam illo excepturi,
-                    laudantium ipsa. Animi labore libero consectetur illo. Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Officiis
-                    numquam consequuntur at quae, nostrum saepe? Totam
-                    inventore, voluptatum aspernatur molestiae at dolores
-                    perspiciatis ratione tempora? Officia perferendis commodi
-                    non quidem.
+                    Le dieu Thalassor a de la fièvre. En effet, la température
+                    des océans a augmenté de 15°C. La cause ? Une espèce de raie
+                    à la température corporelle très élevée qui prolifère dans
+                    les eaux du monde entier. Incarnez un requin génétiquement
+                    modifié pour résoudre ce problème et sauvez les océans !
+                    Utilisez les flèches du clavier pour vous déplacer, et la
+                    touche entrée pour sélectionner des améliorations.
                 </p>
             </button>
 
             <button
-                class="text-2xl p-6 z-10"
+                class="text-2xl w-full rounded-xl bg-slate-500 hover:bg-slate-700 h-20 hover:h-1/2 transition-all duration-200 flex flex-col items-center justify-center text-white font-bold group gap-3 p-4"
                 onclick={() => {
                     window.location.href = '/poumons';
-                }}>Poumons</button
-            >
+                }}
+                >Poumons
+
+                <p class="hidden group-hover:block font-normal">
+                    Les poumons de Thalassor sont envahis par des algues
+                    toxiques, qui prolifèrent à cause de l'acidification des
+                    océans. Si ces algues ne sont pas nettoyées rapidement,
+                    elles risquent de contaminer toute la flore qui s'y trouve.
+                    Cliquez sur les algues rouges pour les mettre hors d'état de
+                    nuire avant qu'elles ne s'attaquent aux algues vertes.
+                </p>
+            </button>
+
             <button
-                class="text-2xl p-6 z-10"
+                class="text-2xl w-full rounded-xl bg-slate-500 hover:bg-slate-700 h-20 hover:h-1/2 transition-all duration-200 flex flex-col items-center justify-center text-white font-bold group gap-3 p-4"
                 onclick={() => {
                     window.location.href = '/race';
-                }}>Peau</button
-            >
+                }}
+                >Peau
+
+                <p class="hidden group-hover:block font-normal">
+                    Le dieu Thalassor a un mauvais cas de peau sèche. En effet,
+                    sa peau est couverte de squames et a perdu toute trace
+                    d'hydratation. Incarnez un poisson pris au piège dans une
+                    partie asséchée de l'océan pour l'aider à regagner l'eau.
+                    Naviguez à travers les obstacles en utilisant les flèches du
+                    clavier et cliquez le plus vite possible avec votre souris
+                    pour prendre de la vitesse !
+                </p>
+            </button>
+
             <button
-                class="text-2xl p-6 z-10"
+                class="text-2xl w-full rounded-xl bg-slate-500 hover:bg-slate-700 h-20 hover:h-1/2 transition-all duration-200 flex flex-col items-center justify-center text-white font-bold group gap-3 p-4"
                 onclick={() => {
                     window.location.href = '/shrimpyshot';
-                }}>Estomac</button
-            >
+                }}
+                >Estomac
+
+                <p class="hidden group-hover:block font-normal">
+                    Le dieu Thalassor est indisposé. Son estomac est rempli
+                    d'impuretés qui ne manquent pas de troubler le quotidien de
+                    Béatrice, une crevette mantisse qui a la capacité de tirer
+                    des bulles d'air. Aidez-la à tirer profit de ses capacités
+                    pour nettoyer l'estomac de Thalassor en éliminant les sacs
+                    plastiques ! Utilisez la barre espace pour gagner de la
+                    hauteur et la touche S pour tirer.
+                </p>
+            </button>
         </div>
     </div>
 </main>
