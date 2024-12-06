@@ -35,6 +35,10 @@ Route::get('/about', function () {
     return Inertia::render('About');
 })->middleware(['auth', 'verified'])->name('about');
 
+Route::get('/shrimpyshot', function () {
+    return Inertia::render('ShrimpyShot');
+})->name('shrimpyshot');
+
 /* Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
