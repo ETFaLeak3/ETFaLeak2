@@ -169,6 +169,7 @@
   {#if victory}
     <div class="absolute inset-0 flex items-center justify-center bg-black/70">
       <p class="text-4xl font-bold text-green-600">Victory!</p>
+      <button class="px-4 py-2 mt-4 bg-green-600 text-white rounded-md" on:click={() => {window.location.href="/menu"}}>Retour au menu</button>
     </div>
   {/if}
 </div>

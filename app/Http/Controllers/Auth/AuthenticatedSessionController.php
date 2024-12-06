@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
         $basepath = env('APP_URL',null);
 
-        return Inertia::location($basepath.'profile');
+        return Inertia::location($basepath.'menu');
     }
 
     /**
