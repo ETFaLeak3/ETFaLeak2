@@ -42,6 +42,23 @@
     return false;
   }
 
+  function check_victory(){
+    let nb_prolifera = 0;
+    for (let i = 1; i < matrix.length - 1; i++) {
+      for (let j = 1; j < matrix[i].length - 1; j++) {
+        if (matrix[i][j] === 2) {
+          nb_prolifera++;
+        }
+      }
+    }
+    if (nb_prolifera === 0){
+      victory = true;
+      return true;
+    }
+    return false;
+
+  }
+
   function initializeMatrix() {
     while (count < 5 && !gameOver) {
       for (let i = 1; i < matrix.length - 1; i++) {
@@ -61,6 +78,13 @@
         if (count >= 5 || gameOver) break;
       }
     }
+    for (let i = 0; i < 10; i++) {
+      let i = Math.floor(Math.random() * matrix.length);
+      let j = Math.floor(Math.random() * matrix[0].length);
+      if (matrix[i][j] === 0) {
+        matrix[i][j] = 2;
+      }
+    }
   }
 
   function click_Algue(event: MouseEvent, i: number, j: number) {
@@ -74,7 +98,7 @@
     // Update progress bar
     const progressInterval = setInterval(() => {
       if (!gameOver && !victory) {
-        progress += (100 / GAME_DURATION) * 100; // Increment progress
+        progress += (100 / GAME_DURATION) * 1000; // Increment progress
         if (progress >= 100) {
           progress = 100;
           victory = true; // Player wins
@@ -87,24 +111,28 @@
     const gameInterval = setInterval(() => {
       if (!gameOver && !victory) {
         checkGameOver();
+        if(check_victory()){
+          clearInterval(spawnInterval)
+        }
       }
       if (gameOver || victory) clearInterval(gameInterval);
     }, 500);
 
     // Spawn random `2`s
-    setInterval(() => {
-      if (!gameOver) {
+    const spawnInterval = setInterval(() => {
+      if (!gameOver && !victory) {
         let i = Math.floor(Math.random() * matrix.length);
         let j = Math.floor(Math.random() * matrix[0].length);
         if (matrix[i][j] === 0) {
           matrix[i][j] = 2;
         }
       }
-    }, 800);
+    }, 1000);
   });
 </script>
 
 <div class="relative w-full h-full">
+  <img src="/sable.png" alt="Background" class="absolute inset-0 w-full h-full object-cover" />
   <!-- Progress bar -->
   <div class="fixed z-10 top-0 left-0 w-full h-2 bg-gray-300 rounded-xl">
     <div
